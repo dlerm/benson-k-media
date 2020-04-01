@@ -1,0 +1,40 @@
+{
+  "name": "benson-k-media",
+  "version": "1.0.0",
+  "description": "A custom wordpress theme for Benson K Media",
+  "scripts": {
+    "test": "",
+    "start": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlerm/benson-k-media.git"
+  },
+  "author": "Daniel Lerman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlerm/benson-k-media/issues"
+  },
+  "homepage": "https://github.com/dlerm/benson-k-media#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "fs": "^0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglifycss": "^1.1.0",
+    "path": "^0.12.7",
+    "require-dir": "^1.2.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.42.1",
+    "webpack-stream": "^5.2.1"
+  }
+}

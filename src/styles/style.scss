@@ -1,0 +1,23 @@
+/*!
+Theme Name: Benson K Media
+Theme URI: https://github.com/dlerm/benson-k-media
+Author: Daniel Lerman
+Author URI: http://dlerman.com/
+Description: A custom wordpress theme
+Version: 1.0.0
+License: GNU General Public License
+License URI: https://www.gnu.org/licenses/gpl.html
+Tags: custom, responsive
+Text Domain: benson-k-media
+*/
+
+@charset 'UTF-8';
+
+// @import 'base/mixins';
+@import 'base/variables';
+// @import 'base/fonts';
+@import 'base/elements';
+
+@import 'components/scroll';
+
+@import 'components/fullscreen';

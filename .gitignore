@@ -1,0 +1,17 @@
+# Packages
+node_modules/
+
+# Private
+.env
+
+# Builds
+dist
+*.zip
+
+# Misc
+.DS_Store
+NOTES.md
+
+# Assets
+designs/
+media/
