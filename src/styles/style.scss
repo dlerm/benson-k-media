@@ -1,5 +1,5 @@
 /*!
-Theme Name: Benson K Media Staging
+Theme Name: Benson K Media
 Theme URI: https://github.com/dlerm/benson-k-media
 Author: Daniel Lerman
 Author URI: http://dlerman.com/
@@ -13,10 +13,19 @@ Text Domain: benson-k-media
 
 @charset 'UTF-8';
 
-// @import 'base/mixins';
+@import 'tools/media-queries';
+
 @import 'base/variables';
+
+@import 'base/typography';
+
 // @import 'base/fonts';
+
 @import 'base/elements';
+
+@import 'components/header';
+
+@import 'components/menu-toggle';
 
 @import 'components/scroll';
 

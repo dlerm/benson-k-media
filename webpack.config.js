@@ -10,10 +10,10 @@ module.exports = {
   },
   stats: false,
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-      automaticNameDelimiter: '-',
-    },
+    // splitChunks: {
+    //   chunks: 'all',
+    //   automaticNameDelimiter: '-',
+    // },
     minimize: true,
     minimizer: [
       new UglifyJsPlugin(),

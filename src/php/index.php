@@ -1,26 +1,6 @@
 <?php get_header(); ?>
 <main>
-
-  <section class="fullscreen">
-    <picture class="fullscreen__bg">
-      <img class="fullscreen__bg-image" src="<?php echo get_theme_mod('index_desktop_bg'); ?>">
-    </picture>
-
-    <div class="fullscreen__content">
-      <h1>KYLE BENSON</h1>
-      <h2>video editor | videographer | film photography</h2>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p><a href="mailto:kyle@bensonkmedia.com" title="email">Email</a></p>
-      <p><a href="tel:8185234412" title="Phone">Phone</a></p>
-      <p><a href="https://www.instagram.com/bensonk_media/" target="_blank" title="Instagram">bensonk_media</a></p>
-    </div>
-  </section>
-
+  <div class="site-header__spacer"></div>
   <section class="photo-grid">
     <?php
       $portrait_args = array(
@@ -42,20 +22,42 @@
       for ($i = 0; $i < $max_post_count; $i++) {
         if ($portrait_posts_count > $i) {
           $id = $portrait_posts[$i]->ID;
-          echo '<div data-title="'.$portrait_posts[$i]->post_title.'">
-                  <img src="'.get_the_post_thumbnail_url($id, array(210, 316)).'" srcset="'.get_the_post_thumbnail_url($id, array(420, 632)).' 2x" />
+          echo '<div class="photo-grid__photo photo-grid__photo--portrait" data-title="'.$portrait_posts[$i]->post_title.'">
+                  <img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, array(210, 316)).'" srcset="'.get_the_post_thumbnail_url($id, array(420, 632)).' 2x" />
                 </div>';
           
         }
         if ($landscape_posts_count > $i) {
           $id = $landscape_posts[$i]->ID;
-          echo '<div data-title="'.$landscape_posts[$i]->post_title.'">';
-          echo '<img src="'.get_the_post_thumbnail_url($id, array(436, 300)).'" srcset="'.get_the_post_thumbnail_url($id, array(872, 600)).' 2x" />';
+          echo '<div class="photo-grid__photo photo-grid__photo--landscape" data-title="'.$landscape_posts[$i]->post_title.'">';
+          echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, array(436, 300)).'" srcset="'.get_the_post_thumbnail_url($id, array(872, 600)).' 2x" />';
           echo '</div>';
           
         }
       }
     ?>
   </section>
+
+  <section class="grid">
+    <?php
+      $video_args = array(
+        'tag' => 'Video',
+        'numberposts' => -1
+      );
+      $video_posts = get_posts($video_args);
+      $video_posts_count = count($video_posts);
+      for ($i = 0; $i < $video_posts_count; $i++) {
+        $id = $video_posts[$i]->ID;
+        echo '<div class="grid__item grid__item--full" data-title="'.htmlentities($video_posts[$i]->post_title).'" data-modal-show="video-modal" data-video="'.get_post_meta($id, 'vimeo_id', true).'">';
+        echo '<img class="grid__image" src="'.get_the_post_thumbnail_url($id, array(1356, 450)).'" srcset="'.get_the_post_thumbnail_url($id, array(2712, 900)).' 2x" />';
+        echo '</div>';
+      }
+    ?>
+  </section>
+
+  <dialog class="modal">
+    <button class="modal__close"><i class="fa fa-close"></i></button>
+    <div class="modal__video" id="modal-video"></div>
+  </dialog>
 </main>
 <?php get_footer(); ?>

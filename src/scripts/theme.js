@@ -1,3 +1,6 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//   console.log('Sup!!!');
-// });
+import VimeoPlayer from './components/Vimeo';
+
+document.addEventListener('DOMContentLoaded', () => {
+  VimeoPlayer();
+  console.log('fire');
+});
