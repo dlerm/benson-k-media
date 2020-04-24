@@ -1,6 +1,7 @@
-import VimeoPlayer from './components/Vimeo';
+import Vimeo from './components/Vimeo';
+import Modal from './components/Modal';
 
 document.addEventListener('DOMContentLoaded', () => {
-  VimeoPlayer();
-  console.log('fire');
+  Modal.bind();
+  Vimeo.bindModal();
 });

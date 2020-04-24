@@ -1,26 +1,34 @@
 import Player from '@vimeo/player';
 
 let player = false;
+let activeVideo = false;
 
-const videoModal = document.getElementById('modal-video');
-
-const init = () => {
-  document.querySelectorAll('[data-modal-show]').forEach((modalTrigger, index) => {
-    console.log('loop', index)
-    console.log('Data', modalTrigger.dataset);
+const bindModal = () => {
+  const videoModal = document.getElementById('modal-video');
+  document.querySelectorAll('[data-modal-open]').forEach((modalTrigger, index) => {
     const { video } = modalTrigger.dataset;
-    console.log('ID', video);
     if (!player && video) {
-      console.log('START VIDEO - ', modalTrigger.dataset.title)
       player = new Player('modal-video', {
         id: video,
+        width: 1024,
       });
+      activeVideo = video;
     }
     modalTrigger.addEventListener('click', (event) => {
-      console.log('click');
-      player.loadVideo(video);//.then(player.play);
+      if (activeVideo !== video) player.loadVideo(video).then(player.play);
+      else player.play();
     })
-  })  
+  })
+
+  document.querySelectorAll('[data-modal-close]').forEach((modalTrigger, index) => {
+    modalTrigger.addEventListener('click', (event) => {
+      if (!player) return;
+      player.pause();
+      player.setCurrentTime(0);
+    })
+  });
 }
 
-export default init;
+export default {
+  bindModal,
+};

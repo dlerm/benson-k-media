@@ -48,16 +48,17 @@
       $video_posts_count = count($video_posts);
       for ($i = 0; $i < $video_posts_count; $i++) {
         $id = $video_posts[$i]->ID;
-        echo '<div class="grid__item grid__item--full" data-title="'.htmlentities($video_posts[$i]->post_title).'" data-modal-show="video-modal" data-video="'.get_post_meta($id, 'vimeo_id', true).'">';
+        echo '<div class="grid__item grid__item--full" data-title="'.htmlentities($video_posts[$i]->post_title).'" data-modal-open="video-player" data-video="'.get_post_meta($id, 'vimeo_id', true).'">';
         echo '<img class="grid__image" src="'.get_the_post_thumbnail_url($id, array(1356, 450)).'" srcset="'.get_the_post_thumbnail_url($id, array(2712, 900)).' 2x" />';
         echo '</div>';
       }
     ?>
   </section>
 
-  <dialog class="modal">
-    <button class="modal__close"><i class="fa fa-close"></i></button>
+  <div class="overlay" data-overlay></div>
+  <div class="modal" data-modal="video-player">
+    <button class="modal__close" data-modal-close><i class="fa fa-close"></i></button>
     <div class="modal__video" id="modal-video"></div>
-  </dialog>
+  </div>
 </main>
 <?php get_footer(); ?>
