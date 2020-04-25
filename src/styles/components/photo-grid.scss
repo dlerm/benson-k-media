@@ -30,18 +30,25 @@
     width: 16.6667%;
     max-width: 16.6667%;
     flex-basis: 16.6667%;
+    cursor: pointer;
   }
 
   &--landscape {
     width: 33.3334%;
     max-width: 33.3334%;
     flex-basis: 33.3334%;
+    cursor: pointer;
   }
 
   &--full {
     width: 100%;
     max-width: 100%;
-    flex-basus: 100%;
+    flex-basis: 100%;
+  }
+
+  &--video {
+    cursor: pointer;
+    // cursor: url('./images/caret-square-right-white.svg'), auto;
   }
 }
 

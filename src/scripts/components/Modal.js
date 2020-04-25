@@ -1,3 +1,5 @@
+import { player as modalVimeoPlayer, playerReset } from './Vimeo';
+
 const TRANSITION_DURATION = 500;
 
 const overlay = document.querySelector('[data-overlay]');
@@ -27,6 +29,7 @@ const close = () => {
     }, TRANSITION_DURATION);
   }
   document.body.removeAttribute('modal-active');
+  if(modalVimeoPlayer) playerReset(modalVimeoPlayer);
 };
 
 const bind = () => {
@@ -37,7 +40,9 @@ const bind = () => {
   document.querySelectorAll('[data-modal-close]').forEach((modalTrigger) => {
     modalTrigger.addEventListener('click', close);
   });
-}
+
+  overlay.addEventListener('click', close);
+};
 
 export default {
   bind
