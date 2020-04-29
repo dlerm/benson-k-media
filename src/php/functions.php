@@ -154,3 +154,8 @@ function register_customizer( $wp_customize ) {
     )
   ));
 }
+
+add_image_size('portrait-1x', 214, 321, false);
+add_image_size('portrait-2x', 428, 642, false);
+add_image_size('landscape-1x', 485, 321, false);
+add_image_size('landscape-2x', 970, 642, false);

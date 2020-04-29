@@ -19,21 +19,47 @@
       $landscape_posts_count = count($landscape_posts);
       $max_post_count = ($portrait_posts_count <= $landscape_posts_count) ? $landscape_posts_count : $portrait_posts_count;
 
-      for ($i = 0; $i < $max_post_count; $i++) {
-        if ($portrait_posts_count > $i) {
-          $id = $portrait_posts[$i]->ID;
-          echo '<div class="photo-grid__photo photo-grid__photo--portrait" data-modal-open="photo-viewer" data-title="'.$portrait_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">
-                  <img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, array(210, 316)).'" srcset="'.get_the_post_thumbnail_url($id, array(420, 632)).' 2x" />
-                </div>';
+      // for ($i = 0; $i < $max_post_count; $i++) {
+      //   if ($portrait_posts_count > $i) {
+      //     $id = $portrait_posts[$i]->ID;
+      //     echo '<div class="photo-grid__photo photo-grid__photo--portrait" data-modal-open="photo-viewer" data-title="'.$portrait_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
+      //     echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, 'portrait-1x').'" srcset="'.get_the_post_thumbnail_url($id, 'portrait-1x').', '.get_the_post_thumbnail_url($id, 'portrait-2x').' 2x" />';
+      //     echo '</div>';
           
+      //   }
+      //   if ($landscape_posts_count > $i) {
+      //     $id = $landscape_posts[$i]->ID;
+      //     echo '<div class="photo-grid__photo photo-grid__photo--landscape" data-modal-open="photo-viewer" data-title="'.$landscape_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
+      //     echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, 'landscape-1x').'" srcset="'.get_the_post_thumbnail_url($id, 'landscape-1x').', '.get_the_post_thumbnail_url($id, 'landscape-2x').' 2x" />';
+      //     echo '</div>';
+      //   }
+      // }
+
+      $photo_args = array(
+        'tag' => 'photo',
+        'numberposts' => -1
+      );
+      $photo_posts = get_posts($photo_args);
+      $photo_posts_count = count($photo_posts);
+      for ($i = 0; $i < $photo_posts_count; $i++) {
+        $id = $photo_posts[$i]->ID;
+        $tags = wp_get_post_tags($id);
+        $mod_class = '';
+        $thumbnail_size_1x = '';
+        $thumbnail_size_2x = '';
+        if (has_tag('portrait', $id)) {
+          $mod_class = 'portrait';
+          $thumbnail_size_1x = 'portrait-1x';
+          $thumbnail_size_2x = 'portrait-2x';
+        } else if (has_tag('landscape', $id)) {
+          $mod_class = 'landscape';
+          $thumbnail_size_1x = 'landscape-1x';
+          $thumbnail_size_2x = 'landscape-2x';
         }
-        if ($landscape_posts_count > $i) {
-          $id = $landscape_posts[$i]->ID;
-          echo '<div class="photo-grid__photo photo-grid__photo--landscape" data-modal-open="photo-viewer" data-title="'.$landscape_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
-          echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, array(436, 300)).'" srcset="'.get_the_post_thumbnail_url($id, array(872, 600)).' 2x" />';
-          echo '</div>';
-          
-        }
+
+        echo '<div class="photo-grid__photo photo-grid__photo--'.$mod_class.'" data-modal-open="photo-viewer" data-title="'.$photo_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
+        echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, $thumbnail_size_1x).'" srcset="'.get_the_post_thumbnail_url($id, $thumbnail_size_1x).', '.get_the_post_thumbnail_url($id, $thumbnail_size_2x).' 2x" />';
+        echo '</div>';
       }
     ?>
   </section>

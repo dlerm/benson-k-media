@@ -3,9 +3,9 @@ const sizedImage = (url, width = false, height = false, scale = false) => {
   if (!width && !height && !scale) return url;
   let sizedImageUrl = url.split('?')[0];
   sizedImageUrl += '?';
-  if (width) sizedImageUrl += `w=${width}`;
-  if (height) sizedImageUrl += `h=${height}`;
-  if (scale) sizedImageUrl += `zoom=${scale}`;
+  if (width) sizedImageUrl += `&w=${width}`;
+  if (height) sizedImageUrl += `&h=${height}`;
+  if (scale) sizedImageUrl += `&zoom=${scale}`;
   return sizedImageUrl
 };
 
