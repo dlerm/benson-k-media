@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main>
   <div class="site-header__spacer"></div>
-  <section class="photo-grid">
+  <section class="photo-grid" id="photos">
     <?php
       $portrait_args = array(
         'tag' => 'portrait',
@@ -57,14 +57,14 @@
           $thumbnail_size_2x = 'landscape-2x';
         }
 
-        echo '<div class="photo-grid__photo photo-grid__photo--'.$mod_class.'" data-modal-open="photo-viewer" data-title="'.$photo_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
+        echo '<div class="photo-grid__photo photo-grid__photo--'.$mod_class.'" data-modal-open="photo-viewer" data-title="'.$photo_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'" data-photo-index="'.$i.'">';
         echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, $thumbnail_size_1x).'" srcset="'.get_the_post_thumbnail_url($id, $thumbnail_size_1x).', '.get_the_post_thumbnail_url($id, $thumbnail_size_2x).' 2x" />';
         echo '</div>';
       }
     ?>
   </section>
 
-  <section class="grid">
+  <section class="grid" id="videos">
     <?php
       $video_args = array(
         'tag' => 'Video',
@@ -88,6 +88,8 @@
   </div>
   <div class="modal modal--photo-viewer" data-modal="photo-viewer">
     <button class="modal__close" data-modal-close aria-label="Close Photo Modal"><i class="fa fa-close"></i></button>
+    <button class="modal__nav-arrow modal__nav-arrow--prev" data-photo-viewer-nav data-nav-dir="-1" type="button" aria-label="Prev Image"><i class="fa fa-chevron-left"></i></button>
+    <button class="modal__nav-arrow modal__nav-arrow--next" data-photo-viewer-nav data-nav-dir="1" type="button" aria-label="Next Image"><i class="fa fa-chevron-right"></i></button>
     <picture class="modal__photo" id="modal-photo">
       <!-- <source media="" srcset="" />
       <img src="" srcset="" alt="" /> -->

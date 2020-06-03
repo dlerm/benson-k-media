@@ -27,7 +27,7 @@
   <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/theme.js" defer="defer"></script>
 </head>
 <body <?php body_class(); ?>>
-  <header class="site-header">
+  <header class="site-header" id="header">
     <nav class="nav">
       <button class="menu-toggle">
         <div class="menu-toggle__lines">
@@ -65,13 +65,13 @@
 
       <ul class="menu">
         <li class="menu__item">
-          <a class="menu__link" href="#"><span>PHOTOS</span></a>
+          <a class="menu__link" data-scroll="photos"><span>PHOTOS</span></a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="#"><span>VIDEOS</span></a>
+          <a class="menu__link" data-scroll="videos"><span>VIDEOS</span></a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="#"><span>CONTACT</span></a>
+          <a class="menu__link" href="mailto:bensonk108@gmail.com"><span>CONTACT</span></a>
         </li>
       </ul>
     </nav>

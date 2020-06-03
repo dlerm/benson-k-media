@@ -1,8 +1,8 @@
-.grid, 
+.grid,
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   // width: 100%;
   max-width: 1440px;
   padding: $size-000 0 $size-5;
@@ -11,10 +11,11 @@
   @include tablet-up {
     padding: $size-4 $size-4 $size-5;
     margin: 0 -#{$size-0};
+    justify-content: space-between;
   }
 
   @media screen and (min-width: $screen-xxl) {
-    margin: 0 auto;   
+    margin: 0 auto;
   }
 }
 
@@ -27,17 +28,29 @@
   }
 
   &--portrait {
-    width: 16.6667%;
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
+    width: 25%;
+    max-width: 25%;
+    flex-basis: 25%;
     cursor: pointer;
+
+    @include tablet-up {
+      width: 16.6667%;
+      max-width: 16.6667%;
+      flex-basis: 16.6667%;
+    }
   }
 
   &--landscape {
-    width: 33.3334%;
-    max-width: 33.3334%;
-    flex-basis: 33.3334%;
+    width: 50%;
+    max-width: 50%;
+    flex-basis: 50%;
     cursor: pointer;
+
+    @include tablet-up {
+      width: 33.3334%;
+      max-width: 33.3334%;
+      flex-basis: 33.3334%;
+    }
   }
 
   &--full {

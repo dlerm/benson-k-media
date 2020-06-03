@@ -58,9 +58,9 @@ html {
   flex: 1;
 
   @include tablet-up {
-    flex-basis: auto; 
-    flex-grow: 0; 
-    justify-content: flex-start; 
+    flex-basis: auto;
+    flex-grow: 0;
+    justify-content: flex-start;
   }
 }
 
@@ -123,4 +123,5 @@ html {
   padding: $size-1;
   letter-spacing: $size-000;
   font-weight: 700;
+  cursor: pointer;
 }

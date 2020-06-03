@@ -36,13 +36,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - #{$size-6});
+  max-height: calc(100vh - #{$size-6});
   overflow: hidden;
+  transition: height 0.5s ease-in-out;
+  min-height: 200px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  &.is-loading {
+    position: relative;
+
+    &:before {
+      content: '\f110';
+      font-family: $font-awesome;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      animation: loaderSpin 1.2s infinite linear;
+      font-size: $size-5;
+      line-height: $size-5;
+      width: $size-5;
+      height: $size-5;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0 0;
+      transform: translate(-50%, -50%);
+      color: $accent;
+    }
+
+    img {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes loaderSpin {
+  0% {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+  50% {
+    transform: rotate(180deg) translate(-50%, -50%);
+  }
+  100% {
+    transform: rotate(360deg) translate(-50%, -50%);
   }
 }
 
@@ -103,11 +145,61 @@
     background-color: rgb(0, 173, 239);
 
     &:after {
-      transform: translateY(-50%) scale(1, 1); 
+      transform: translateY(-50%) scale(1, 1);
     }
 
     &:before {
       opacity: 1;
     }
+  }
+}
+
+.modal__nav-arrow {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(100% + #{$size-0});
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: $white;
+  font-size: $size-2;
+  background-color: #172322;
+  border-radius: $size-0;
+  transition: 0.25s ease-in-out;
+
+  @include tablet-up {
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  &--prev {
+    left: 0;
+
+    @include tablet-up {
+      left: $size-2;
+    }
+  }
+
+  &--next {
+    right: 0;
+
+    @include tablet-up {
+      right: $size-2;
+    }
+  }
+
+  .modal:hover & {
+    opacity: 1;
+  }
+
+  &:hover {
+    background-color: $accent;
+  }
+
+  &:focus {
+    outline-color: $accent;
   }
 }

@@ -1,16 +1,20 @@
-$font-primary:    acumin-pro-extra-condensed, sans-serif;
-$font-secondary:  "Arial", sans-serif;
+$font-primary: acumin-pro-extra-condensed, sans-serif;
+$font-secondary: 'Arial', sans-serif;
+$font-awesome: FontAwesome;
 
-$white:   #FFFFFF;
-$black:   #000000;
+$white: #ffffff;
+$black: #000000;
+$light-blue: #00adef;
 
-$screen-xxs:  320px;
-$screen-xs:   375px;
-$screen-sm:   480px;
-$screen-md:   768px;
-$screen-lg:   992px;
-$screen-xl:   1200px;
-$screen-xxl:  1400px;
+$accent: $light-blue;
+
+$screen-xxs: 320px;
+$screen-xs: 375px;
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1400px;
 
 $size-000: 2px;
 $size-00: 4px;
