@@ -1,6 +1,62 @@
-<?php get_header(); ?>
+<?php 
+  get_header(); 
+
+  $photo_args = array(
+    'tag' => 'photo',
+    'numberposts' => -1
+  );
+  $photo_posts = get_posts($photo_args);
+  $photo_posts_count = count($photo_posts);
+
+  $video_args = array(
+    'tag' => 'Video',
+    'numberposts' => -1
+  );
+  $video_posts = get_posts($video_args);
+  $video_posts_count = count($video_posts);
+?>
 <main>
   <div class="site-header__spacer"></div>
+
+  <section class="fullscreen hero">
+    <picture class="fullscreen__bg hero__bg">
+      <img class="fullscreen__bg-image hero__bg-image" src="<?php echo get_theme_mod('index_desktop_bg'); ?>">
+    </picture>
+
+    <div class="fullscreen__content hero__content">
+      <h1 class="hero__title">KYLE BENSON</h1>
+      <h2 class="hero__subtitle">video editor <span class="text-divider">|</span> videographer <span class="text-divider">|</span> film photography</h2>
+      <p class="hero__text"><a class="hero__link" href="mailto:bensonk108@gmail.com" title="email"><i class="fa fa-envelope"></i> email</a></p>
+      <!-- <p class="hero__text"><a class="hero__link" href="tel:8185234412" title="Phone"><i class="fa fa-phone"></i> Phone</a></p> -->
+      <p class="hero__text"><a class="hero__link" href="https://www.instagram.com/bensonk_media/" target="_blank" title="Instagram"><i class="fa fa-instagram"></i> bensonk_media</a></p>
+    </div>
+  </section>
+
+  <section class="grid vis-nav">
+    <?php
+      $featured_photo_id = $photo_posts[$photo_posts_count - 1]->ID;
+      $featured_video_id = $photo_posts[16]->ID;
+    ?>
+    <button class="vis-nav__btn" type="button" data-scroll="photos" aria-label="Move to  Photos">
+      <div class="vis-nav__content vis-nav__content--shift-up-right">
+        <img class="photo-grid__image" 
+          src="<?php echo get_the_post_thumbnail_url($featured_photo_id, array(680, 380)); ?>" 
+          srcset="<?php echo get_the_post_thumbnail_url($featured_photo_id, array(680, 380)); ?>, <?php echo get_the_post_thumbnail_url($featured_photo_id, array(1360, 760)); ?> 2x"
+         />
+         <h1 class="vis-nav__title">PHOTOS</h1>
+       </div>
+    </button>
+    <button class="vis-nav__btn" type="button" data-scroll="videos" aria-label="Move to  Videos">
+      <div class="vis-nav__content vis-nav__content--shift-down-left">
+        <img class="photo-grid__image" 
+          src="<?php echo get_the_post_thumbnail_url($featured_video_id, array(680, 380)); ?>" 
+          srcset="<?php echo get_the_post_thumbnail_url($featured_video_id, array(680, 380)); ?>, <?php echo get_the_post_thumbnail_url($featured_video_id, array(1360, 760)); ?> 2x"
+         />
+         <h1 class="vis-nav__title">VIDEOS</h1>
+       </div>
+    </button>
+  </section>
+
   <section class="photo-grid" id="photos">
     <?php
       $portrait_args = array(
@@ -35,12 +91,7 @@
       //   }
       // }
 
-      $photo_args = array(
-        'tag' => 'photo',
-        'numberposts' => -1
-      );
-      $photo_posts = get_posts($photo_args);
-      $photo_posts_count = count($photo_posts);
+      
       for ($i = 0; $i < $photo_posts_count; $i++) {
         $id = $photo_posts[$i]->ID;
         $tags = wp_get_post_tags($id);
@@ -66,12 +117,6 @@
 
   <section class="grid" id="videos">
     <?php
-      $video_args = array(
-        'tag' => 'Video',
-        'numberposts' => -1
-      );
-      $video_posts = get_posts($video_args);
-      $video_posts_count = count($video_posts);
       for ($i = 0; $i < $video_posts_count; $i++) {
         $id = $video_posts[$i]->ID;
         echo '<div class="grid__item grid__item--full grid__item--video" data-title="'.htmlentities($video_posts[$i]->post_title).'" data-modal-open="video-player" data-video="'.get_post_meta($id, 'vimeo_id', true).'">';
