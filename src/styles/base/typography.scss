@@ -1,4 +1,20 @@
-h1 {
-  font-size: $size-4;
+h1,
+.h1 {
+  font-size: $size-5;
   letter-spacing: $size-000;
+}
+
+h2,
+.h2 {
+  font-size: $size-4;
+  letter-spacing: $size-0000;
+}
+
+h3,
+.h3 {
+  font-size: $size-3;
+}
+
+p {
+  font-size: $size-3;
 }

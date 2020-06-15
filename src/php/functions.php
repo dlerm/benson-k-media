@@ -133,9 +133,8 @@ function register_customizer( $wp_customize ) {
     'theme_supports' => '',
   ));
 
-  $wp_customize->add_setting( 'index_desktop_bg' );
-  $wp_customize->add_setting( 'index_mobile_bg' );
 
+  $wp_customize->add_setting( 'index_desktop_bg' );
   $wp_customize->add_control( new WP_Customize_Image_Control(
     $wp_customize, 'index_desktop_bg', array(
       'label' => 'Desktop background Image',
@@ -145,12 +144,49 @@ function register_customizer( $wp_customize ) {
     )
   ));
 
+  $wp_customize->add_setting( 'index_mobile_bg' );
   $wp_customize->add_control( new WP_Customize_Image_Control(
     $wp_customize, 'index_mobile_bg', array(
       'label' => 'Mobile background Image',
       'section' => 'index',
       'settings' => 'index_mobile_bg',
-      'priority' => 20,
+      'priority' => 11,
+    )
+  ));  
+
+  $wp_customize->add_setting( 'index_tile1_label' );
+  $wp_customize->add_control('index_tile1_label', array(
+    'type' => 'text',
+    'label' => 'Tile 1 Label',
+    'section' => 'index',
+    'priority' => 20,
+  ));
+
+  $wp_customize->add_setting( 'index_tile1_img' );
+  $wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize, 'index_tile1_img', array(
+      'label' => 'Tile 1 Image',
+      'section' => 'index',
+      'settings' => 'index_tile1_img',
+      'priority' => 21,
+    )
+  ));
+
+  $wp_customize->add_setting( 'index_tile2_label' );
+  $wp_customize->add_control('index_tile2_label', array(
+    'type' => 'text',
+    'label' => 'Tile 2 Label',
+    'section' => 'index',
+    'priority' => 25,
+  ));
+
+  $wp_customize->add_setting( 'index_tile2_img' );
+  $wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize, 'index_tile2_img', array(
+      'label' => 'Tile 2 Image',
+      'section' => 'index',
+      'settings' => 'index_tile2_img',
+      'priority' => 26,
     )
   ));
 }
@@ -159,3 +195,23 @@ add_image_size('portrait-1x', 214, 321, false);
 add_image_size('portrait-2x', 428, 642, false);
 add_image_size('landscape-1x', 485, 321, false);
 add_image_size('landscape-2x', 970, 642, false);
+
+function get_image ( $src, $width = false, $height = false, $zoom = false ) {
+  $domain = $_SERVER['HTTP_HOST'];
+  if (strpos($src,  $domain) === false) return $src;
+  $photon_domain = 'i0.wp.com/' . $domain;
+  $custom_src = str_replace($domain, $photon_domain, $src);
+  $custom_src .= '?';
+  if ($width) $custom_src .= '&w=' . $width;
+  if ($height) $custom_src .= '&h=' . $height;
+  if ($zoom) $custom_src .= '&zoom=' . $zoom;
+  return $custom_src;
+}
+
+add_filter( 'big_image_size_threshold', '__return_false' );
+
+// add_action('wp_head', 'get_template');
+function get_template_name () {
+  global $template;
+  return basename($template);
+}

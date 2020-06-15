@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  // width: 100%;
+  width: auto;
   max-width: 1440px;
   padding: $size-000 0 $size-5;
   margin: 0 -#{$size-000};
@@ -21,10 +21,40 @@
 
 .grid__item,
 .photo-grid__photo {
+  position: relative;
+  cursor: pointer;
   padding: $size-000;
 
   @include tablet-up {
     padding: $size-0;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+  }
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '\f002';
+    font-size: $size-3;
+    color: $white;
+    font-family: $font-awesome;
+    z-index: 1;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.25);
   }
 
   &--portrait {
@@ -60,8 +90,29 @@
   }
 
   &--video {
-    cursor: pointer;
-    // cursor: url('./images/caret-square-right-white.svg'), auto;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: $size-5;
+      height: $size-5;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url('./images/caret-square-right-white.svg');
+      background-size: contain;
+      background-position: center;
+      z-index: 1;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    &:before,
+    &:after {
+      opacity: 1;
+    }
   }
 }
 

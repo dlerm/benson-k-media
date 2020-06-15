@@ -39,7 +39,7 @@
 
       <div class="logo__container">
         <a class="logo__link" href="/">
-          <h1 class="logo"><span class="tablet-down">KB</span><span class="tablet-up">KYLE BENSON</span></h1>
+          <h1 class="logo h2"><span class="tablet-down">KB</span><span class="tablet-up">KYLE BENSON</span></h1>
         </a>
       </div>
 
@@ -65,10 +65,21 @@
 
       <ul class="menu">
         <li class="menu__item">
+          <?php if (get_template_name() === 'index.php') { ?>
           <a class="menu__link" data-scroll="photos"><span>PHOTOS</span></a>
+          <?php } else { ?>
+          <a class="menu__link" href="/#photos"><span>PHOTOS</span></a>
+          <?php } ?>
         </li>
         <li class="menu__item">
+          <?php if (get_template_name() === 'index.php') { ?>
           <a class="menu__link" data-scroll="videos"><span>VIDEOS</span></a>
+          <?php } else { ?>
+          <a class="menu__link" href="/#videos"><span>VIDEOS</span></a>
+          <?php } ?>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="/about"><span>ABOUT</span></a>
         </li>
         <li class="menu__item">
           <a class="menu__link" href="mailto:bensonk108@gmail.com"><span>CONTACT</span></a>
@@ -76,3 +87,5 @@
       </ul>
     </nav>
   </header>
+
+  <main>

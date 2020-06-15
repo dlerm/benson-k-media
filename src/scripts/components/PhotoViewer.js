@@ -1,3 +1,5 @@
+import { close as modalClose } from './Modal';
+
 let activePhotoIndex = false;
 const photos = [];
 let photoModal = document.getElementById('modal-photo');
@@ -61,6 +63,10 @@ const bind = () => {
       const dir = parseInt(navElement.dataset.navDir);
       activatePhoto(activePhotoIndex + dir);
     });
+  });
+
+  document.querySelector('[data-modal="photo-viewer"]').addEventListener('click', event => {
+    if (event.target.id === 'modal-photo-viewer') modalClose();
   });
 };
 

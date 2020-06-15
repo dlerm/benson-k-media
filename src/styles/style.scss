@@ -19,6 +19,8 @@ Text Domain: benson-k-media
 
 @import 'base/typography';
 
+@import 'base/container';
+
 // @import 'base/fonts';
 
 @import 'base/elements';
@@ -34,8 +36,9 @@ Text Domain: benson-k-media
 @import 'components/overlay';
 
 @import 'components/hero';
-// @import 'components/fullscreen';
 
 @import 'components/photo-grid';
 
 @import 'components/vis-nav';
+
+@import 'templates/page';
