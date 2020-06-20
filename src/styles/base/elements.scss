@@ -2,6 +2,11 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  outline-color: $accent;
+}
+
+html {
+  margin-top: 0 !important;
 }
 
 html,
@@ -55,4 +60,8 @@ button {
   box-shadow: none;
   border: 0;
   cursor: pointer;
+}
+
+#wpadminbar {
+  display: none;
 }

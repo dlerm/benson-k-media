@@ -1,4 +1,8 @@
 .page__title {
   text-transform: uppercase;
-  text-align: center;
+  margin-bottom: 0;
+}
+
+.page__section {
+  padding-top: $size-4;
 }

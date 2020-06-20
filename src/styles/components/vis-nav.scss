@@ -4,7 +4,6 @@
 
 .vis-nav__btn {
   flex: 1;
-  outline: 0;
 
   @include mobile-only {
     padding: 0 2px;
@@ -28,7 +27,6 @@
     z-index: 2;
 
     @include tablet-up {
-      // transform: translate(6px, -6px);
       transition: 0.25s ease-in-out;
     }
   }
@@ -45,26 +43,9 @@
     &:before {
       @include tablet-up {
         opacity: 0;
-        // transform: translate(-6px, 6px);
       }
     }
   }
-
-  // &--shift-up-right {
-  //   &:before {
-  //     @include tablet-up {
-  //       transform: translate(-6px, 6px);
-  //     }
-  //   }
-
-  //   .vis-nav__btn:hover & {
-  //     &:before {
-  //       @include tablet-up {
-  //         transform: translate(6px, -6px);
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 .vis-nav__title {
@@ -76,28 +57,4 @@
   z-index: 2;
   color: $white;
   margin: 0;
-
-  // &:after {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   height: 30%;
-  //   width: 100%;
-  //   background-color: $accent;
-  //   transition: 0.25s ease-in-out;
-  //   z-index: -1;
-
-  //   @include tablet-up {
-  //     width: 0;
-  //   }
-  // }
-
-  // .vis-nav__btn:hover & {
-  //   &:after {
-  //     @include tablet-up {
-  //       width: 100%;
-  //     }
-  //   }
-  // }
 }

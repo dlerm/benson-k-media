@@ -25,8 +25,12 @@
   text-align: center;
   padding: $size-5 $size-2;
 
-  @include tablet-up {
-    padding: 160px $size-2;
+  &--large {
+    padding: $size-5 $size-2;
+
+    @include tablet-up {
+      padding: 160px $size-2;
+    }
   }
 }
 
@@ -61,25 +65,8 @@
     margin-right: $size-0;
   }
 
-  // &:after {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 0%;
-  //   height: 35%;
-  //   background-color: $accent;
-  //   transition: 0.25s ease-in-out;
-  //   z-index: -1;
-  // }
-
   &:hover {
     text-shadow: 1px 2px 4px rgba($black, 0.5);
-    // text-shadow: 1px 1px 1px $accent, 2px 2px 1px $accent, 3px 3px 1px $accent;
-
-    // &:after {
-    //   width: calc(100% + 2px);
-    // }
   }
 }
 

@@ -21,11 +21,13 @@ Text Domain: benson-k-media
 
 @import 'base/container';
 
-// @import 'base/fonts';
-
 @import 'base/elements';
 
 @import 'components/header';
+
+@import 'components/footer';
+
+@import 'components/rte';
 
 @import 'components/menu-toggle';
 

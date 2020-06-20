@@ -15,8 +15,8 @@
   $video_posts = get_posts($video_args);
   $video_posts_count = count($video_posts);
 ?>
-<section class="fullscreen hero">
-  <picture class="fullscreen__bg hero__bg">
+<section class="hero">
+  <picture class="hero__bg">
     <?php 
       $image = get_theme_mod('index_desktop_bg');
       $image_m = get_theme_mod('index_mobile_bg') ?? $image;
@@ -34,7 +34,7 @@
     <img class="fullscreen__bg-image hero__bg-image" src="<?php echo get_image($image, 1440); ?>" srcset="<?php echo get_image($image, 1440, false, 2); ?> 2x" alt="Kyle Benson - banner of San Diego sunset" />
   </picture>
 
-  <div class="fullscreen__content hero__content">
+  <div class="hero__content hero__content--large">
     <h1 class="hero__title">KYLE BENSON</h1>
     <h2 class="hero__subtitle h3">video editor <span class="text-divider">|</span> videographer <span class="text-divider">|</span> film photography</h2>
     <p class="hero__text"><a class="hero__link" href="mailto:bensonk108@gmail.com" title="email"><i class="fa fa-envelope"></i> email</a></p>
@@ -84,23 +84,6 @@
     $portrait_posts_count = count($portrait_posts);
     $landscape_posts_count = count($landscape_posts);
     $max_post_count = ($portrait_posts_count <= $landscape_posts_count) ? $landscape_posts_count : $portrait_posts_count;
-
-    // for ($i = 0; $i < $max_post_count; $i++) {
-    //   if ($portrait_posts_count > $i) {
-    //     $id = $portrait_posts[$i]->ID;
-    //     echo '<div class="photo-grid__photo photo-grid__photo--portrait" data-modal-open="photo-viewer" data-title="'.$portrait_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
-    //     echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, 'portrait-1x').'" srcset="'.get_the_post_thumbnail_url($id, 'portrait-1x').', '.get_the_post_thumbnail_url($id, 'portrait-2x').' 2x" />';
-    //     echo '</div>';
-        
-    //   }
-    //   if ($landscape_posts_count > $i) {
-    //     $id = $landscape_posts[$i]->ID;
-    //     echo '<div class="photo-grid__photo photo-grid__photo--landscape" data-modal-open="photo-viewer" data-title="'.$landscape_posts[$i]->post_title.'" data-photo="'.get_the_post_thumbnail_url($id, 'full').'">';
-    //     echo '<img class="photo-grid__image" src="'.get_the_post_thumbnail_url($id, 'landscape-1x').'" srcset="'.get_the_post_thumbnail_url($id, 'landscape-1x').', '.get_the_post_thumbnail_url($id, 'landscape-2x').' 2x" />';
-    //     echo '</div>';
-    //   }
-    // }
-
     
     for ($i = 0; $i < $photo_posts_count; $i++) {
       $id = $photo_posts[$i]->ID;

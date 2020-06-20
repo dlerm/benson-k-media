@@ -4,22 +4,6 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <?php // Favicon Generics ?>
-  <!-- <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=32" sizes="32x32">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=57" sizes="57x57">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=76" sizes="76x76">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=96" sizes="96x96">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=128" sizes="128x128">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=192" sizes="192x192">
-  <link rel="icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=228" sizes="228x228"> -->
-  <?php // Favicon Android ?>
-  <!-- <link rel="shortcut icon" sizes="196x196" href=“https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg196.png"> -->
-  <?php // Favicon iOS ?>
-  <!-- <link rel="apple-touch-icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=120" sizes="120x120">
-  <link rel="apple-touch-icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=152" sizes="152x152">
-  <link rel="apple-touch-icon" href="https://i0.wp.com/mikelermanmusic.com/wp-content/uploads/favicon-ml.jpg?w=180" sizes="180x180"> -->
-
   <?php wp_head(); ?>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
@@ -29,17 +13,19 @@
 <body <?php body_class(); ?>>
   <header class="site-header" id="header">
     <nav class="nav">
-      <button class="menu-toggle">
-        <div class="menu-toggle__lines">
-          <div class="menu-toggle__line menu-toggle__line--1"></div>
-          <div class="menu-toggle__line menu-toggle__line--2"></div>
-          <div class="menu-toggle__line menu-toggle__line--3"></div>
-        </div>
-      </button>
+      <div class="menu-toggle">
+        <button class="menu-toggle__btn" id="mobile-menu-toggle">
+          <div class="menu-toggle__lines">
+            <div class="menu-toggle__line menu-toggle__line--1"></div>
+            <div class="menu-toggle__line menu-toggle__line--2"></div>
+            <div class="menu-toggle__line menu-toggle__line--3"></div>
+          </div>
+        </button>
+      </div>
 
       <div class="logo__container">
         <a class="logo__link" href="/">
-          <h1 class="logo h2"><span class="tablet-down">KB</span><span class="tablet-up">KYLE BENSON</span></h1>
+          <p class="logo h2"><span class="tablet-down">KB</span><span class="tablet-up">KYLE BENSON</span></p>
         </a>
       </div>
 
@@ -63,17 +49,20 @@
         </ul>
       </div>
 
-      <ul class="menu">
+      <ul class="menu" id="menu">
+        <li class="menu__item menu__item--home">
+        <a class="menu__link" href="/"><span>HOME</span></a>
+        </li>
         <li class="menu__item">
           <?php if (get_template_name() === 'index.php') { ?>
-          <a class="menu__link" data-scroll="photos"><span>PHOTOS</span></a>
+          <a class="menu__link" data-scroll="photos" href><span>PHOTOS</span></a>
           <?php } else { ?>
           <a class="menu__link" href="/#photos"><span>PHOTOS</span></a>
           <?php } ?>
         </li>
         <li class="menu__item">
           <?php if (get_template_name() === 'index.php') { ?>
-          <a class="menu__link" data-scroll="videos"><span>VIDEOS</span></a>
+          <a class="menu__link" data-scroll="videos" href><span>VIDEOS</span></a>
           <?php } else { ?>
           <a class="menu__link" href="/#videos"><span>VIDEOS</span></a>
           <?php } ?>
