@@ -71,7 +71,7 @@
           <a class="menu__link" href="/about"><span>ABOUT</span></a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="mailto:bensonk108@gmail.com"><span>CONTACT</span></a>
+          <a class="menu__link" href="/contact"><span>CONTACT</span></a>
         </li>
       </ul>
     </nav>
